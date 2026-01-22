@@ -1,12 +1,8 @@
 {
-  "buildCommand": "cd client && npm install && npm run build",
-  "outputDirectory": "client/dist",
+  "buildCommand": "cd client && npm install && npm run build && cp -r dist ../dist",
+  "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
-    {
-      "source": "/assets/(.*)",
-      "destination": "/client/dist/assets/$1"
-    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
