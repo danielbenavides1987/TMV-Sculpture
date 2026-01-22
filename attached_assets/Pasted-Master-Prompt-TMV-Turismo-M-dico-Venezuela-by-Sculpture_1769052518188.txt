@@ -1,0 +1,85 @@
+Master Prompt: TMV - Turismo Médico Venezuela by Sculpture
+Application Name: TMV
+
+Slogan: Turismo Médico Venezuela by Sculpture
+
+Language: Spanish (Primary) and English (Toggle).
+
+Objective:
+Develop a premium, full-stack web application to manage a 360-degree medical tourism service. The platform must facilitate interaction between Patients, Doctors, and a System Admin to coordinate surgeries, luxury lodging in allied hotels, and logistics.
+
+1. Multi-Role Architecture & Navigation
+A. Patient View (El Cliente)
+Landing & Onboarding: Professional UI with a statistical pop-up about Venezuela's medical quality.
+
+Doctor Directory: Searchable list. Each profile displays:
+
+Professional Biography (Dual language).
+
+CV Download/View (PDF).
+
+Image Gallery (Certificates and clinic facilities).
+
+Label: "Consulta con Costo" or "Consulta de Cortesía".
+
+Dynamic Package Configurator: Once a surgery is proposed, the patient accesses an interactive panel to:
+
+Select an Allied Hotel (Gallery + Price per night).
+
+Input Number of Stay Days (Live calculation).
+
+Toggle VIP Logistics (Airport pickup/Local transport).
+
+Toggle Personalized Meal Plan (3 meals/day).
+
+Contact Logic: If Logistics or Meals are toggled, an input field asks for the preferred WhatsApp number (defaults to registration phone unless changed).
+
+Payment Module: Form to report Zelle, PayPal, or Bank Transfers (Input for Reference #, Bank, Amount, Date, and Screenshot/Receipt upload).
+
+B. Doctor View (El Especialista)
+Profile Management: Interface to upload/update CV (PDF), bio, and image gallery.
+
+Clinical Desk: Portal to view patient-uploaded medical history and a specialized form to fill out the History/Diagnosis during the consultation.
+
+Proposal Generator: A tool to submit the technical medical cost of a surgery (Doctor fees + Supplies) to the Admin for review.
+
+C. Admin View (El Máster - Centro de Mando)
+Payment Verification: A checklist dashboard to approve/reject reported payments (2-24h window).
+
+Quote/Logistics Editor: Receives doctor proposals, attaches selected Allied Hotel costs, and sets flat fees for transport. Finalizes the package before the patient sees it.
+
+Concierge CRM: A high-priority list of patients who requested Meals/Logistics. Displays their chosen WhatsApp number with a "Click to Chat" direct link.
+
+Alliance Manager: CRUD system to add/edit Allied Hotels (Name, Price, Photos, Services).
+
+2. Business Logic & Workflows
+The 3-Step Quote Flow:
+
+Doctor submits medical proposal -> Status: Under Admin Review.
+
+Admin adds Hotel options and Logistics -> Status: Ready for Patient.
+
+Patient configures days/meals -> Status: Pending Payment.
+
+Price Calculation Formula: Total = Surgery_Base_Cost + (Hotel_Price_Night * Days) + (Meal_Plan_Price * Days) + Logistics_Fee.
+
+Multilingual Support: All static text and dynamic content (Bios/Services) must have fields for both Spanish and English. The app defaults to Spanish.
+
+Human Touch Trigger: Activating the "Meal Plan" or "Logistics" toggle creates a task for the Admin to contact the patient via WhatsApp within 24-48h for personalization.
+
+3. Technical Requirements (For Replit Agent)
+Stack: Next.js (Frontend), Supabase/PostgreSQL (Database & Auth), Tailwind CSS (UI).
+
+Database Tables:
+
+Users: ID, Email, Role (Admin/Doctor/Patient), Language.
+
+Doctor_Profiles: Bio, CV_URL, Image_List, Fees.
+
+Hotel_Alliances: Name, Price_Night, Meal_Price, Photos.
+
+Quotes: Patient_ID, Doctor_ID, Surgery_Cost, Stay_Days, Hotel_ID, Extras_Toggle, Total, Status.
+
+Payments: Quote_ID, Reference_Num, Receipt_Image, Status.
+
+UI/UX: Premium aesthetic (Sculpture Branding). Use teal, surgical blue, and white space. Ensure mobile responsiveness.
