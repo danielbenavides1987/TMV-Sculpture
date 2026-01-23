@@ -6,8 +6,10 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      // Como ahora el archivo está en 'client', la ruta es directa a './src'
+      // "@" apunta a client/src
       "@": path.resolve(__dirname, "./src"),
+      // "@shared" sale de client y busca shared en la raíz
+      "@shared": path.resolve(__dirname, "../shared"),
     },
   },
   build: {
