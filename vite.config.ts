@@ -6,15 +6,15 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      // Como el archivo está afuera, le decimos que entre a 'client/src'
+      // Esto le dice a Vite: cuando veas "@", busca dentro de "client/src"
       "@": path.resolve(__dirname, "./client/src"),
     },
   },
-  // Le indicamos que el código de la web está en la carpeta 'client'
-  root: "./client",
+  // IMPORTANTE: Le decimos que la raíz de la aplicación web es la carpeta 'client'
+  root: path.resolve(__dirname, "client"),
   build: {
-    // Esto hará que la carpeta 'dist' se cree dentro de 'client'
-    outDir: "../dist",
+    // Esto sacará la carpeta 'dist' a la raíz para que Vercel la vea fácil
+    outDir: path.resolve(__dirname, "dist"),
     emptyOutDir: true,
   },
 });
